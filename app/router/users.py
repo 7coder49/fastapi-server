@@ -10,7 +10,7 @@ router = APIRouter()
 def create_user(user: dict):
     db = SessionLocal()
     
-    db_user = User(name=user['name'], dept=user['dept'], email=user['dept'])
+    db_user = User(name=user['name'], dept=user['dept'], age=user['age'])
     
     db.add(db_user)
     db.commit()
@@ -22,7 +22,7 @@ def create_user(user: dict):
 
 
 @router.get("/getUsers")
-def get_user(user_id: int):
+def get_user():
     db = SessionLocal()
     
     db_users = db.query(User).all()
